@@ -12,7 +12,7 @@ import scala.collection.JavaConverters._
   * Created by Y. Benabderrahmane on 12/10/2017.
   */
 object LineageGraphGenerator extends AppCore {
-  val lineageGraphDbPath = "data-lineage-spark-demo/src/main/resources/examples/lineage-graph"
+  val lineageGraphDbPath = "src/main/resources/examples/lineage-graph"
   case object ProducedUsing extends RelationshipType {
     override def name(): String = "ProducedUsing"
   }

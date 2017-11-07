@@ -18,7 +18,7 @@ trait AppCore extends Serializable {
     protected override def _sqlContext: SQLContext = spark.sqlContext
   }
 
-  val lineageFilePath = "data-lineage-spark-demo/src/main/resources/examples/lineage/lineage-data-v1.json"
+  val lineageFilePath = "src/main/resources/examples/lineage/lineage-data-v1.json"
   var processId: String = ""
   var spark: SparkSession = _
 

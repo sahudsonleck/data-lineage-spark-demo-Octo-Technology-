@@ -14,8 +14,8 @@ object BusinessDriver_Two extends AppCore with LazyLogging {
     init(getClass, runId = 47)
 
     val namesAndProductsVersion = args(0)
-    val inputFilePath = s"data-lineage-spark-demo/src/main/resources/examples/generated2/namesAndProducts.json"
-    val productPurchaseOutputFilePath = "data-lineage-spark-demo/src/main/resources/examples/generated2/productSummary.json"
+    val inputFilePath = s"src/main/resources/examples/generated2/namesAndProducts.json"
+    val productPurchaseOutputFilePath = "src/main/resources/examples/generated2/productSummary.json"
 
     val namesAndProductsRdd = readPrunedJson(inputFilePath, version = namesAndProductsVersion, referenceDataset = true)
     namesAndProductsRdd.foreach(println)

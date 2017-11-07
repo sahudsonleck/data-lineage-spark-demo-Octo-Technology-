@@ -20,14 +20,14 @@ object BusinessDriver_One extends AppCore with LazyLogging {
 
     init(getClass, runId)
 
-    val clients = readJson(s"data-lineage-spark-demo/src/main/resources/examples/raw/$clientsFileName", referenceDataset = true)
-    val products = readJson(s"data-lineage-spark-demo/src/main/resources/examples/raw/$productsFileName")
+    val clients = readJson(s"src/main/resources/examples/raw/$clientsFileName", referenceDataset = true)
+    val products = readJson(s"src/main/resources/examples/raw/$productsFileName")
 
     val namesAndProductsPairRdd = combineClientsAndProducts(clients, products)
 
     namesAndProductsPairRdd.foreach(value => println(s"===========> value: $value"))
 
-    val outputFilePath = "data-lineage-spark-demo/src/main/resources/examples/generated2/namesAndProducts.json"
+    val outputFilePath = "src/main/resources/examples/generated2/namesAndProducts.json"
 //    delete(new File(outputFilePath))
     writeRddToJson(namesAndProductsPairRdd, outputFilePath)
     println(namesAndProductsPairRdd.toDebugString)
