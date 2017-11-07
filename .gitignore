@@ -1,0 +1,6 @@
+.idea/
+*.iml
+src/main/resources/examples/generated/
+src/main/resources/examples/generated2/
+src/main/resources/examples/lineage/
+target/
