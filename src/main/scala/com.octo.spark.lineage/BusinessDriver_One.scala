@@ -23,18 +23,18 @@ object BusinessDriver_One extends AppCore with LazyLogging {
     val clients = readJson(s"src/main/resources/examples/raw/$clientsFileName", referenceDataset = true)
     val products = readJson(s"src/main/resources/examples/raw/$productsFileName")
 
-    val namesAndProductsPairRdd = combineClientsAndProducts(clients, products)
+    val namesAndProductsRdd = combineClientsAndProducts(clients, products)
 
-    namesAndProductsPairRdd.foreach(value => println(s"===========> value: $value"))
+    namesAndProductsRdd.foreach(value => println(s"===========> value: $value"))
 
     val outputFilePath = "src/main/resources/examples/generated2/namesAndProducts.json"
 //    delete(new File(outputFilePath))
-    writeRddToJson(namesAndProductsPairRdd, outputFilePath)
-    println(namesAndProductsPairRdd.toDebugString)
+    writeRddToJson(namesAndProductsRdd, outputFilePath)
+    println(namesAndProductsRdd.toDebugString)
     println("//// RDDtoStringExtraction------------------------------------------------")
-    println(RDDToStringExtraction.toDebugString(namesAndProductsPairRdd))
+    println(RDDToStringExtraction.toDebugString(namesAndProductsRdd))
     println("//// RDDLineageExtractor.lineageTree------------------------------------------------")
-    val lineageTree = RDDLineageExtractor.lineageTree(namesAndProductsPairRdd)
+    val lineageTree = RDDLineageExtractor.lineageTree(namesAndProductsRdd)
     println(TreeNode.describe(lineageTree))
   }
 
